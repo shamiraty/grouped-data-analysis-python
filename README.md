@@ -31,7 +31,7 @@ This project is a web application developed using Django for managing student in
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your_username/student-information-management-system.git
+   git clone https://github.com/shamiraty/grouped-data-analysis-python
 
 
 2. Youtube:

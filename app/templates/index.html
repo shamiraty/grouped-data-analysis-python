@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Age Analysis</title>
+    <!-- Material Design Bootstrap CSS -->
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <h3 class="mb-4">Frequency Analysis</h3>
+        <!-- Age Intervals and Frequencies Table -->
+    
+
+        <!-- Statistics Cards -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Mean</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ mean }}</p>
+                        <i class="fas fa-chart-line"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Mode</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ mode }}</p>
+                        <i class="fas fa-chart-bar"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Median</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ median }} (Class: {{ median_class }})</p>
+                        <i class="fas fa-chart-pie"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Standard Deviation</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ std_dev }}</p>
+                        <i class="fas fa-chart-area"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Mean Deviation</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ mean_dev }}</p>
+                        <i class="fas fa-chart-pie"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Skewness</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ skew }}</p>
+                        <i class="fas fa-chart-line"></i> <!-- Font Awesome icon -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row"> 
+    <div class="col-md-6">
+        <!-- Skewness Visualization -->
+        <div class="card mb-4">
+            <div class="card-header">Skewness Visualization</div>
+            <div class="card-body">
+                {{ skew_fig|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <!-- Cumulative Frequency vs. Upper Class Boundary -->
+        <div class="card mb-4">
+            <div class="card-header">Cumulative Frequency vs. Upper Class Boundary</div>
+            <div class="card-body">
+                {{ fig1|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">Age Intervals and Frequencies</div>
+    <div class="card-body">
+        <table class="table" id="ageTable">
+            <thead>
+                <tr>
+                    <th>Age Interval</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in freq_table.values %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+ 
+
+
+</body>
+</html>
+{% endblock %}
+{% endblock %}

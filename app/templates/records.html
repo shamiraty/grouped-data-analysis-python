@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Age Analysis</title>
+    <!-- Material Design Bootstrap CSS -->
+    
+</head>
+<body>
+    <div class="container-fluid">
+      
+    
+ 
+
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Fullname</th>
+                    <th>Registered Date</th>
+                    <th>Updated Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr hx-get="{% url 'update_student' student.pk %}" hx-trigger="click">
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.fullname }}</td>
+                    <td>{{ student.Registered_date }}</td>
+                    <td>{{ student.Updated_date }}</td>
+                    <td>
+                        <button hx-delete="{% url 'delete_student' student.pk %}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="post" hx-post="{% url 'create_student' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Student</button>
+        </form>
+ 
+
+
+ 
+
+
+</body>
+</html>
+{% endblock %}
+{% endblock %}
